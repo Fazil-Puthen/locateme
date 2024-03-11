@@ -39,6 +39,12 @@ dependencies:
   google_maps_flutter: ^2.6.0
   location: ^5.0.3
   geocoding: ^2.2.0
+  google_fonts: ^6.2.1
+  freezed_annotation: 
+  json_annotation: 
+  dio: ^5.4.1
+  marquee: ^2.2.3
+  change_app_package_name: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +56,9 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+  freezed: 
+  build_runner: 
+  json_serializable: 
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

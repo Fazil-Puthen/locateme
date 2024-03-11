@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "885036310817",
+    "project_id": "locateme-19402",
+    "storage_bucket": "locateme-19402.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885036310817:android:76183de52c020c58481e60",
+        "android_client_info": {
+          "package_name": "com.locatme.Fazil"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAzVYHWkDXZ8eNUsngRw0DDfSx5yX711Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

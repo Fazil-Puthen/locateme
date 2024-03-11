@@ -1,12 +1,15 @@
+import 'dart:async';
+
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:locater/models/fetchadress.dart';
+import 'package:locater/models/locationmodel/locationmodel.dart';
 import 'package:location/location.dart';
 
 LatLng? _presentLoc; 
-LatLng place=const LatLng(12.9121, 77.6446);
 Location locationcontroller= Location();
+String adress='Location permission denied';
  
-Future<LatLng?> getlocation()async{
+Future<LocationModel> getlocation()async{
     bool _serviceEnable;
     PermissionStatus _permissionGranted;
 
@@ -16,7 +19,7 @@ Future<LatLng?> getlocation()async{
      _serviceEnable=await locationcontroller.requestService();
     }
     else{
-      print('no service');
+    throw Exception('no service ');
     }
 
     _permissionGranted=await locationcontroller.hasPermission();
@@ -24,16 +27,17 @@ Future<LatLng?> getlocation()async{
     if(_permissionGranted==PermissionStatus.denied){
     _permissionGranted=await locationcontroller.requestPermission();
       if(_permissionGranted!=PermissionStatus.granted){
-        print('no service');
+        throw Exception('Location permision denied');
       }
     }
-
-    locationcontroller.onLocationChanged.listen((LocationData currentlocation) {
+     Completer<String> completer = Completer<String>();
+    locationcontroller.onLocationChanged.listen((LocationData currentlocation)async {
       if(currentlocation.latitude!=null && currentlocation.longitude!=null){
-          _presentLoc=LatLng(currentlocation.latitude!, currentlocation.longitude!);
-          // print('this is the prent location $_presentLoc');
-          fetchaddress(_presentLoc);
+        _presentLoc=LatLng(currentlocation.latitude!, currentlocation.longitude!);
+        adress=await fetchaddress(_presentLoc) ;
+        completer.complete(adress);
       }
      });
-     return _presentLoc;
+     adress=await completer.future;
+     return LocationModel(location: _presentLoc!,description: adress);
   }

@@ -18,7 +18,7 @@ class _SplashState extends State<Splash> {
     Navigator.pushReplacement(context,MaterialPageRoute(builder: (ctx)=>Home()));
     });
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,12 +27,13 @@ class _SplashState extends State<Splash> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               width: 500,
               height: 500,
               child: Image.asset('asset/LocateMe_transparent.png'),
             ),
-            const Text('Fetchimg Location.....',style:TextStyle(color: Colors.red),),
+            const Text('locating...',style:TextStyle(fontFamily: AutofillHints.addressCity,
+            fontSize: 10,color: Colors.red)),
             box,
            const CircularProgressIndicator(color: Colors.yellow,)
           ],
